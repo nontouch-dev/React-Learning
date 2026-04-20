@@ -24,9 +24,3 @@
 - [x] **Custom Fetch Wrapper**: ด่านตรวจ API ที่ทำหน้าที่แทรก `Authorization: Bearer <token>` อัตโนมัติทุกครั้งที่ดึงข้อมูล
 - [x] **Data Table with Caching**: ตารางแสดงรายชื่อพนักงานที่มีระบบ Caching ช่วยให้ไม่ต้องดึงข้อมูลใหม่โดยไม่จำเป็น พร้อมปุ่ม Manual Refetch
 - [x] **Form Mutation**: ระบบเพิ่มรายชื่อพนักงานผ่าน Modal ที่เมื่อเพิ่มสำเร็จจะสั่งรีเฟรชตารางอัตโนมัติ
-
-## ⚙️ การติดตั้งและรันโปรเจกต์ (Getting Started)
-
-1. Clone โปรเจกต์นี้ลงมาที่เครื่องของคุณ
-```bash
-git clone [https://github.com/nontouch-dev/React-Learning.git](https://github.com/nontouch-dev/React-Learning.git)

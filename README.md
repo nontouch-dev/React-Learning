@@ -1,73 +1,32 @@
-# React + TypeScript + Vite
+# 🚀 React Enterprise Stack - Learning Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-B73BA5?style=for-the-badge&logo=vite&logoColor=FFD62E)](https://vitejs.dev/)
 
-Currently, two official plugins are available:
+## 📝 เกี่ยวกับโปรเจกต์ (About)
+โปรเจกต์นี้ถูกสร้างขึ้นเพื่อ **ศึกษา ทำความเข้าใจ และทบทวน** การเขียนแอปพลิเคชันด้วย React ในระดับโครงสร้างที่ใช้กันในองค์กร (Enterprise Architecture)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+เนื้อหาในโปรเจกต์เน้นไปที่การแก้ปัญหาคลาสสิกของการทำ Frontend เช่น การจัดการสถานะ (State Management), การป้องกันหน้าเว็บ (Route Guard), การดึงและจำข้อมูลจาก API (Data Fetching & Caching) และการจัดการฟอร์มที่มีประสิทธิภาพ
 
-## React Compiler
+## 🛠️ เทคโนโลยีที่ใช้ (Tech Stack)
+โปรเจกต์นี้รวบรวมเครื่องมือ (Libraries) ยอดนิยมที่สายงาน Frontend Developer มักใช้งานจริง:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **[React Router DOM](https://reactrouter.com/)**: จัดการระบบ Routing, การทำ Layout ซ้อนกัน และการทำ `<ProtectedRoute>` เพื่อกั้นผู้ใช้ที่ยังไม่ได้เข้าสู่ระบบ
+* **[Zustand](https://github.com/pmndrs/zustand)**: จัดการ Global State สำหรับระบบ Authentication พร้อมใช้งาน Middleware `persist` เพื่อบันทึก Token ลง `localStorage` ไม่ให้หายเมื่อรีเฟรชหน้า
+* **[React Query (@tanstack/react-query)](https://tanstack.com/query/latest)**: หัวใจหลักในการจัดการ Server State ควบคุมสถานะ Loading/Error, การทำ Caching ข้อมูลพนักงาน และการทำลายแคช (Invalidation) เมื่อมีการเพิ่มข้อมูลใหม่
+* **[React Hook Form](https://react-hook-form.com/)**: จัดการฟอร์มแบบ Uncontrolled เพื่อลดการรีเรนเดอร์ของหน้าจอ พร้อมระบบ Validation ตรวจสอบความถูกต้องของอีเมลและรหัสผ่าน
+* **Tailwind CSS & HeroUI**: จัดการ UI และ Layout ให้มีความสวยงาม ทันสมัย และรองรับการทำ Responsive Design
 
-## Expanding the ESLint configuration
+## ✨ ฟีเจอร์หลัก (Key Features)
+- [x] **Authentication System**: ระบบ Login พร้อมตรวจสอบรูปแบบข้อมูล (Email & Password)
+- [x] **Protected Routes**: ป้องกันการเข้าถึงหน้า Dashboard หากไม่มี Token
+- [x] **Custom Fetch Wrapper**: ด่านตรวจ API ที่ทำหน้าที่แทรก `Authorization: Bearer <token>` อัตโนมัติทุกครั้งที่ดึงข้อมูล
+- [x] **Data Table with Caching**: ตารางแสดงรายชื่อพนักงานที่มีระบบ Caching ช่วยให้ไม่ต้องดึงข้อมูลใหม่โดยไม่จำเป็น พร้อมปุ่ม Manual Refetch
+- [x] **Form Mutation**: ระบบเพิ่มรายชื่อพนักงานผ่าน Modal ที่เมื่อเพิ่มสำเร็จจะสั่งรีเฟรชตารางอัตโนมัติ
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ⚙️ การติดตั้งและรันโปรเจกต์ (Getting Started)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. Clone โปรเจกต์นี้ลงมาที่เครื่องของคุณ
+```bash
+git clone [https://github.com/nontouch-dev/React-Learning.git](https://github.com/nontouch-dev/React-Learning.git)
